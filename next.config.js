@@ -2,10 +2,10 @@
 // const path = require('path');
 const nextConfig = {
 	reactStrictMode: true,
-	sassOptions: {
-		// incudePaths: [path.join(__dirname, 'styles')],
-		// prependData: `@import "src/styles/variables.scss";`,
-	},
+	// sassOptions: {
+	// incudePaths: [path.join(__dirname, 'styles')],
+	// prependData: `@import "src/styles/variables.scss";`,
+	// },
 }
 
 module.exports = nextConfig
