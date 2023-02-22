@@ -1,0 +1,27 @@
+@import "./variables";
+
+%btnPrimary {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	background: $blue_color;
+	color: white;
+	font-weight: 600;
+	cursor: pointer;
+	width: 100%;
+	border-radius: 0.2rem;
+}
+
+%btnOutlined {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	background: white;
+	color: $blue_color;
+	font-weight: 600;
+	cursor: pointer;
+	width: 100%;
+	border-radius: 0.2rem;
+}

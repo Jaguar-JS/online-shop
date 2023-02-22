@@ -1,0 +1,52 @@
+@import "mixins";
+*{
+	margin:0;
+	box-sizing: border-box;
+	&::before,::after{
+		box-sizing: border-box;
+	}
+}
+html {
+	font-size: calc(100vw / 1920 * 10);
+	@include media1024 {
+		font-size: calc(100vw / 768 * 10);
+	}
+	@include media767 {
+		font-size: calc(100vw / 500 * 10);
+	}
+	@include media500 {
+		font-size: calc(100vw / 375 * 10);
+	}
+}
+
+
+body{
+	font-family: sans-serif;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+button,input,textarea,select{
+	font: inherit;
+}
+
+p,h1,h2,h3,h4,h5,h6{
+	overflow-wrap: break-word;
+}
+
+img,video,canvas,svg{
+	max-width: 100%;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+button{
+	border: none;
+	outline: none;
+}
