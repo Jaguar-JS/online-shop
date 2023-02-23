@@ -6,23 +6,24 @@ import { RiAccountPinCircleLine, RiArrowDropDownFill } from 'react-icons/ri'
 import styles from './styles.module.scss'
 import Link from 'next/link'
 import { UserMenu } from '@/components/header/UserMenu'
+import { Location } from '@/pages'
 
-export interface ITop {}
+export interface ITop {
+	country: Location
+}
 
-export const Top: FC<ITop> = () => {
+export const Top: FC<ITop> = ({ country }) => {
 	const [loggedIn, setLoggedIn] = useState<boolean>(true)
 	const [visible, setVisible] = useState<boolean>(false)
+
 	return (
 		<div className={styles.top}>
 			<div className={styles.top__container}>
 				<div></div>
 				<ul className={styles.top__list}>
 					<li className={styles.li}>
-						<img
-							src="https://static.vecteezy.com/system/resources/previews/006/204/926/original/ukraine-realistic-wavy-flag-free-vector.jpg"
-							alt=""
-						/>
-						<span>Ukraine / usd</span>
+						<img src={country.flag} alt="flag-country" />
+						<span>{country.name} / usd</span>
 					</li>
 					<li className={styles.li}>
 						<MdSecurity />
