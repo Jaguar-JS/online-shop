@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import Link from 'next/link'
 import { CiLocationOn } from 'react-icons/ci'
 
-export const Copyright: FC<any> = ({ copyright }: any) => {
+export const Copyright: FC<any> = ({ copyright, country }: any) => {
 	return (
 		<div className={styles.footer__copyright}>
 			<section>©2023 Online Cinema All Rights Reserved.</section>
@@ -16,7 +16,7 @@ export const Copyright: FC<any> = ({ copyright }: any) => {
 					))}
 					<li>
 						<a href="">
-							<CiLocationOn /> Ukraine
+							<CiLocationOn /> {country.name}
 						</a>
 					</li>
 				</ul>

@@ -3,13 +3,13 @@ import styles from './styles.module.scss'
 import Link from 'next/link'
 
 export interface ILinks {
-	links: any
+	links: { heading: string; links: { name: string; link: string }[] }[]
 }
 
 export const Links: FC<ILinks> = ({ links }) => {
 	return (
 		<div className={styles.footer__links}>
-			{links.map((link: any, index: number) => (
+			{links.map((link, index: number) => (
 				<ul>
 					{index === 0 ? (
 						<img
@@ -19,7 +19,7 @@ export const Links: FC<ILinks> = ({ links }) => {
 					) : (
 						<b>{link.heading}</b>
 					)}
-					{link.links.map((link: any, index: number) => (
+					{link.links.map((link, index: number) => (
 						<li>
 							<Link href={link.link}>{link.name}</Link>
 						</li>
