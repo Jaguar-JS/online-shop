@@ -1,32 +1,42 @@
 import { FC } from 'react'
 import styles from './styles.module.scss'
 import Link from 'next/link'
+import { signIn, signOut } from 'next-auth/react'
 
 export interface IUserMenu {
-	loggedIn: boolean
+	session: any
 }
 
-export const UserMenu: FC<IUserMenu> = ({ loggedIn }) => {
+export const UserMenu: FC<IUserMenu> = ({ session }) => {
 	return (
 		<div className={styles.menu}>
 			<h4>Welcome to Online Shop!</h4>
-			{loggedIn ? (
+			{session ? (
 				<div className={styles.flex}>
 					<img
-						src="https://image.pngaaa.com/689/2189689-middle.png"
-						alt=""
+						src={`${session.user.image}`}
+						alt="user image"
 						className={styles.menu__img}
 					/>
 					<div className={styles.col}>
 						<span>Welcome Back</span>
-						<h3>UserName</h3>
-						<span>sing out</span>
+						<h3>{session.user.name}</h3>
+						<span
+							onClick={(e) => {
+								e.preventDefault()
+								signOut()
+							}}
+						>
+							Sing Out
+						</span>
 					</div>
 				</div>
 			) : (
 				<div className={styles.flex}>
 					<button className={styles.btn__first}>Register</button>
-					<button className={styles.btn__second}>Login</button>
+					<button className={styles.btn__second} onClick={() => signIn()}>
+						Login
+					</button>
 				</div>
 			)}
 			<ul>
