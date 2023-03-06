@@ -8,7 +8,6 @@ export interface Location {
 }
 
 export default function Home({ country }: { country: Location }) {
-	debugger
 	return (
 		<main>
 			<Header country={country} />

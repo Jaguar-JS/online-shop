@@ -7,13 +7,14 @@ import styles from './styles.module.scss'
 import Link from 'next/link'
 import { UserMenu } from '@/components/header/UserMenu'
 import { Location } from '@/pages'
+import { useSession } from 'next-auth/react'
 
 export interface ITop {
 	country: Location
 }
 
 export const Top: FC<ITop> = ({ country }) => {
-	const [loggedIn, setLoggedIn] = useState<boolean>(true)
+	const { data: session } = useSession()
 	const [visible, setVisible] = useState<boolean>(false)
 
 	return (
@@ -46,14 +47,11 @@ export const Top: FC<ITop> = ({ country }) => {
 						onMouseOver={() => setVisible(true)}
 						onMouseLeave={() => setVisible(false)}
 					>
-						{loggedIn ? (
+						{session ? (
 							<li className={styles.li}>
 								<div className={styles.flex}></div>
-								<img
-									src="https://image.pngaaa.com/689/2189689-middle.png"
-									alt=""
-								/>
-								<span>фывфывфывфыв</span>
+								<img src={`${session.user?.image}`} alt="user image" />
+								<span>{session.user?.name}</span>
 								<RiArrowDropDownFill />
 							</li>
 						) : (
@@ -64,7 +62,7 @@ export const Top: FC<ITop> = ({ country }) => {
 								<RiArrowDropDownFill />
 							</li>
 						)}
-						{visible && <UserMenu loggedIn={loggedIn} />}
+						{visible && <UserMenu session={session} />}
 					</li>
 				</ul>
 			</div>
